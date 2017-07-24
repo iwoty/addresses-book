@@ -12,3 +12,12 @@ class AddressBook:
             self.addresses.append(address)
         else:
             raise TypeError('Test dupy się nie powiódł ;(')
+
+    def find(self, search_phrase):
+        match_objects = []
+
+        for obj in self.addresses:
+            if search_phrase.upper() in [value.upper() for value in obj.__dict__.values()]:
+                match_objects.append(obj)
+
+        return match_objects
