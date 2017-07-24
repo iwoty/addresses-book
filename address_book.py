@@ -53,3 +53,14 @@ class AddressBook:
                     new_address_book.add_address(new_address)
 
         return new_address_book
+
+    def save_to_csv(self):
+        filepath = self.__class__.__name__ + '.csv'
+        with open(filepath, "w") as addresses_csv:
+            fieldnames = ['person', 'city', 'street', 'house_no', 'company']
+            addresses_writer = csv.DictWriter(addresses_csv, fieldnames=fieldnames)
+            addresses_writer.writeheader()
+            addresses_list = User.get_user_list()
+            for user in user_list:
+                user_dict = {'name': user.get_name(), 'mail': user.get_mail(), 'password': user.get_password(), 'role': user.get_class_name().lower()}
+                user_writer.writerow(user_dict)
