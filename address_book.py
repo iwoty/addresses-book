@@ -21,3 +21,12 @@ class AddressBook:
                 match_objects.append(obj)
 
         return match_objects
+
+    def sort(self):
+        """
+        Bubble sort.
+        """
+        for address in self.addresses:
+            for i in range(1, len(self.addresses)):     # i-1 so begin from 2nd element
+                if self.addresses[i-1].get_full_address[0] > self.addresses[i].get_full_address[0]:
+                    self.addresses.insert(i, self.addresses.pop(i-1))
